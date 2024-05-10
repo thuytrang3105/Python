@@ -1,0 +1,33 @@
+def is_subsequence(sub, seq):
+    # Kiểm tra xem sub có phải là chuỗi con của seq không
+    i = 0
+    for j in range(len(seq)):
+        if sub[i] == seq[j]:
+            i += 1
+            if i == len(sub):
+                return True
+    return False
+
+def forecast_cash_flow(q, n, m, transaction, minTransaction, maxTransaction):
+    result = ""
+    for i in range(q):
+        can_forecast = True
+        for j in range(m):
+            # Dự đoán tiền giao dịch cho mỗi ngày tiếp theo
+            forecasted_transaction = list(range(minTransaction[j], maxTransaction[j] + 1))
+            # Kiểm tra xem chuỗi dự đoán có là chuỗi con trong các giao dịch của quý không
+            if is_subsequence(forecasted_transaction, transaction[i]):
+                can_forecast = False
+                break
+        # Nếu không thể dự đoán dòng tiền cho quý này mà không lặp lại chuỗi nào, thêm '0' vào kết quả, ngược lại thêm '1'
+        result += '0' if not can_forecast else '1'
+    return result
+
+# Ví dụ
+q = 2
+n = 6
+m = 2
+transaction = [[8, 9, 0, 1, 2, 3], [8, 0, 1, 9, 9, 2]]
+minTransaction = [8, 0]
+maxTransaction = [9, 3]
+print(forecast_cash_flow(q, n, m, transaction, minTransaction, maxTransaction))  # Output: "01"
