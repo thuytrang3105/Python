@@ -1,0 +1,19 @@
+if __name__ == '__main__':
+    arr=[]
+    n=int(input())
+    for _ in range(n):
+        name = input()
+        score = float(input())
+        arr.append([name,score])
+    arr=sorted(arr, key= lambda x: x[0])
+    arr=sorted(arr, key= lambda x: x[1])
+    x=arr[0][1];
+    id=0;
+    while ( x == arr[id][1] ) :
+        id=id+1
+    x=arr[id][1]
+    for i in arr:
+        if ( i[1] == x ):
+            print (i[0])
+        
+            
