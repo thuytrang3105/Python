@@ -1,0 +1,47 @@
+if __name__ == '__main__':
+    s = input()
+    def isalnum(s):
+        for i in s:
+            if i.isalnum():
+                return True
+            else:
+                continue
+        return False
+                
+    def isalpha(s):
+        for i in s:
+            if i.isalpha():
+                return True
+            else:
+                continue
+        return False
+                
+    def isdigit(s):
+        for i in s:
+            if i.isdigit():
+                return True
+            else:
+                continue
+        return False
+                          
+    def islowercase(s):
+        for i in s:
+            if i.islower():
+                return True
+            else:
+                continue
+        return False
+                
+    def isuppercase(s):
+        for i in s:
+            if i.isupper():
+                return True
+            else:
+                continue
+        return False
+                
+            
+            
+    n = len(s)
+    for i in [isalnum(s), isalpha(s), isdigit(s), islowercase(s), isuppercase(s)]:
+        print(i)
