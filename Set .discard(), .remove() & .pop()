@@ -1,0 +1,13 @@
+n = int(input())
+s = set(map(int, input().split()))
+N = int(input())
+for _ in range(N):
+    string=list(map(str,input().split()))
+    if string[0]=='pop':
+        s.pop()
+    elif string[0]=='remove ':
+        s.remove (int(string[1]))
+    else :
+        s.discard (int(string[1]))
+print(sum(s))
+    
