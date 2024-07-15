@@ -1,0 +1,24 @@
+#!/bin/python3
+
+
+def sum_of_multiples(n, limit):
+    p = (limit - 1) // n
+    return n * p * (p + 1) // 2
+
+def re(limit):
+# Calculate the sum of multiples of 3 and 5 below 1000
+    
+    sum_multiples_3 = sum_of_multiples(3, limit)
+    sum_multiples_5 = sum_of_multiples(5, limit)
+
+# Calculate the sum of multiples of 15 below 1000 (to avoid double-counting)
+    sum_multiples_15 = sum_of_multiples(15, limit)
+
+# Calculate the total sum
+    return sum_multiples_3 + sum_multiples_5 - sum_multiples_15
+
+
+N=int(input())
+for _ in range(N):
+    n=int(input())
+    print(re(n))
