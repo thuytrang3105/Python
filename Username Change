@@ -1,0 +1,30 @@
+import os
+
+def cal(s):
+    sorted_chars = ''.join(sorted(s))
+    if sorted_chars < s:
+        return "YES"
+    return "NO"
+
+def possibleChanges(usernames):
+    result = []
+    for username in usernames:
+        result.append(cal(username))
+    return result
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    usernames_count = int(input().strip())
+
+    usernames = []
+
+    for _ in range(usernames_count):
+        usernames.append(input().strip())
+
+    result = possibleChanges(usernames)
+
+    fptr.write('\n'.join(result))
+    fptr.write('\n')
+
+    fptr.close()
