@@ -1,0 +1,47 @@
+def minTime(files, numCores, limit):
+    parallel_files = []
+    serial_files = []
+    
+    for file in files:
+        if file % numCores == 0:
+            parallel_files.append(file)
+        else:
+            serial_files.append(file)
+    
+    # Sort parallel_files in descending order to maximize the efficiency of parallel processing
+    parallel_files.sort(reverse=True)
+    
+    total_time = 0
+    
+    # Process the files that can be processed in parallel
+    for i in range(len(parallel_files)):
+        if i < limit:
+            total_time += parallel_files[i] // numCores
+        else:
+            total_time += parallel_files[i]
+    
+    # Process the files that have to be processed serially
+    total_time += sum(serial_files)
+    
+    return total_time
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    files_count = int(input().strip())
+
+    files = []
+
+    for _ in range(files_count):
+        files_item = int(input().strip())
+        files.append(files_item)
+
+    numCores = int(input().strip())
+
+    limit = int(input().strip())
+
+    result = minTime(files, numCores, limit)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
