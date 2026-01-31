@@ -1,0 +1,16 @@
+from collections import Counter
+
+x=int(input())  #so doi giay
+arr= list( map( int, input().split()))
+size_shoe=Counter(arr)
+
+sl_customer= int(input())
+re=0;
+for _ in range(sl_customer):
+    a,b= map (int,input().split())
+    
+    if (size_shoe[a] >0):
+        re+=b
+        size_shoe[a]-=1
+
+print( re )
