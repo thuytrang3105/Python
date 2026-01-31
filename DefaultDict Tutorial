@@ -1,0 +1,14 @@
+from collections import defaultdict
+
+a,b= map(int, input().split())
+d=defaultdict(list)
+for i in range(a):
+    x=input().strip()
+    d[x].append(i+1)
+    
+for _ in range(b):
+    x=input().strip()
+    if x in d:
+        print (*(d[x]))
+    else:
+        print(-1)
